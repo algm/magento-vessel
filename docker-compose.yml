@@ -16,18 +16,6 @@ services:
       - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
     networks:
       - vessel
-  node:
-    build:
-      context: ./docker/node
-      dockerfile: Dockerfile
-      args:
-        uid: "${WWWUSER}"
-    image: mgvessel/node
-    user: node
-    volumes:
-      - ./magento:/var/www/html
-    networks:
-      - vessel
   mysql:
     image: mysql:5.7
     restart: always
